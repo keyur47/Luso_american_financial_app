@@ -472,6 +472,8 @@ class _FindCouncilScreenState extends State<FindCouncilScreen> {
                         )
                       ],
                     ),
+
+                    
                     SizedBox(
                       height: SizeUtils.horizontalBlockSize * 7,
                     ),
