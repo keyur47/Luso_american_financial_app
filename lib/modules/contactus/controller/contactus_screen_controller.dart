@@ -6,16 +6,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:luso_american_financial/helper/toast_helper.dart';
 import 'package:luso_american_financial/modules/contactus/service/contactus_servicec.dart';
 
-
-class ContactUsScreenController extends GetxController  with SingleGetTickerProviderMixin {
+class ContactUsScreenController extends GetxController with SingleGetTickerProviderMixin {
   late TabController tabController;
-
-
 
   @override
   void onInit() {
     tabController = TabController(length: 2, vsync: this);
-
 
     super.onInit();
   }
@@ -38,7 +34,9 @@ class ContactUsScreenController extends GetxController  with SingleGetTickerProv
   final Completer<GoogleMapController> _controller = Completer();
 
   GoogleMapController? mapController;
+  GoogleMapController? mapController1;
   Map<PolylineId, Polyline> polylines = {};
+  RxBool isLoaded = false.obs;
 
   Future<void> Contact_Us({
     required String mobile,

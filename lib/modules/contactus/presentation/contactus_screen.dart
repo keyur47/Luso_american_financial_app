@@ -21,54 +21,23 @@ class ContactUsScreen extends StatefulWidget {
 
 class _ContactUsScreenState extends State<ContactUsScreen> {
   final ContactUsScreenController contactUsScreenController = Get.find();
-  static const LatLng homeShowLocation = LatLng(53.350140, -6.266155);
-  static const LatLng newBedfordShowLocation =
-      LatLng(41.638409, -70.941208); //location to show in map
-  final Set<Marker> HomeMarkers = new Set();
-  final Set<Marker> NewBedfordMarkers = new Set();
+  LatLng homeShowLocation = LatLng(53.350140, -6.266155);
+  LatLng newBedfordShowLocation = LatLng(41.638409, -70.941208); //location to show in map
+  final Set<Marker> HomeMarkers = Set();
+  final Set<Marker> NewBedfordMarkers = Set();
   final Completer<GoogleMapController> _controller = Completer();
+  RxBool data = false.obs;
 
-  // final CameraPosition _homeShowLocation = const CameraPosition(
-  //   target: LatLng(53.350140, -6.266155),
-  //   tilt: 59.440717697143555,
-  //   zoom: 19.151926040649414,
-  // );
-  //
-  // final CameraPosition _newBedfordShowLocation = const CameraPosition(
-  //   target: LatLng(41.638409, -70.941208),
-  //   tilt: 59.440717697143555,
-  //   zoom: 19.151926040649414,
-  // );
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Future.delayed(const Duration(seconds: 10), () {
+        data.value = true;
+      });
+    });
+  }
 
-  // Set<Marker> getHomeMarkers() {
-  //   setState(() {
-  //     HomeMarkers.add(Marker(
-  //       markerId: MarkerId(homeShowLocation.toString()),
-  //       position: LatLng(53.350140, -6.266155), //position of marker
-  //       infoWindow: InfoWindow(
-  //         title: 'Home Office',
-  //         snippet: '7080 Donlon Way, Suite 200, Dublin CA 94568',
-  //       ),
-  //       icon: BitmapDescriptor.defaultMarker, //Icon for Marker
-  //     ));
-  //   });
-  //   return HomeMarkers;
-  // }
-  //
-  // Set<Marker> getOfficeMarkers() {
-  //   setState(() {
-  //     NewBedfordMarkers.add(Marker(
-  //       markerId: MarkerId(newBedfordShowLocation.toString()),
-  //       position: LatLng(41.638409, -70.941208), //position of marker
-  //       infoWindow: InfoWindow(
-  //         title: 'East Coast Office',
-  //         snippet: '128 Union St., Suite 502 New Bedford MA 02740',
-  //       ),
-  //       icon: BitmapDescriptor.defaultMarker, //Icon for Marker
-  //     ));
-  //   });
-  //   return NewBedfordMarkers;
-  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,16 +67,14 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                     height: SizeUtils.horizontalBlockSize * 25,
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: SizeUtils.horizontalBlockSize * 10),
+                    padding: EdgeInsets.symmetric(horizontal: SizeUtils.horizontalBlockSize * 10),
                     child: CustomTextField(
                       focusedColor: Colors.transparent,
                       enableColor: Colors.transparent,
                       disabledColor: Colors.transparent,
                       isPrefixIcon: true,
                       cursorColor: Colors.transparent,
-                      controller:
-                          contactUsScreenController.searchContactUsController,
+                      controller: contactUsScreenController.searchContactUsController,
                       fillColor: AppColors.white,
                       hintText: StringsUtils.search,
                     ),
@@ -119,17 +86,13 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                     decoration: BoxDecoration(
                       color: AppColors.white,
                       borderRadius: BorderRadius.only(
-                        topLeft:
-                            Radius.circular(SizeUtils.horizontalBlockSize * 10),
-                        topRight:
-                            Radius.circular(SizeUtils.horizontalBlockSize * 10),
+                        topLeft: Radius.circular(SizeUtils.horizontalBlockSize * 10),
+                        topRight: Radius.circular(SizeUtils.horizontalBlockSize * 10),
                       ),
                     ),
                     child: Padding(
                       padding: EdgeInsets.only(
-                          top: SizeUtils.horizontalBlockSize * 8,
-                          left: SizeUtils.horizontalBlockSize * 8,
-                          right: SizeUtils.horizontalBlockSize * 8),
+                          top: SizeUtils.horizontalBlockSize * 8, left: SizeUtils.horizontalBlockSize * 8, right: SizeUtils.horizontalBlockSize * 8),
                       child: Column(
                         children: [
                           AppText(
@@ -139,8 +102,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                             fontWeight: FontWeight.w800,
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: SizeUtils.horizontalBlockSize * 10),
+                            padding: EdgeInsets.symmetric(horizontal: SizeUtils.horizontalBlockSize * 10),
                             child: Column(
                               children: [
                                 Padding(
@@ -154,12 +116,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
-                                          horizontal:
-                                              SizeUtils.horizontalBlockSize *
-                                                  12,
-                                          vertical:
-                                              SizeUtils.horizontalBlockSize *
-                                                  0.5),
+                                          horizontal: SizeUtils.horizontalBlockSize * 12, vertical: SizeUtils.horizontalBlockSize * 0.5),
                                       child: const AppText(
                                         text: "",
                                         fontSize: 0,
@@ -171,8 +128,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: SizeUtils.horizontalBlockSize * 4),
+                            padding: EdgeInsets.symmetric(vertical: SizeUtils.horizontalBlockSize * 4),
                             child: AppText(
                               text: "Luso-American Financial",
                               fontWeight: FontWeight.w600,
@@ -193,8 +149,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: SizeUtils.horizontalBlockSize * 5),
+                            padding: EdgeInsets.symmetric(vertical: SizeUtils.horizontalBlockSize * 5),
                             child: SizedBox(
                               height: SizeUtils.horizontalBlockSize * 45,
                               // child: GoogleMap(
@@ -208,8 +163,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                                 mapType: MapType.normal,
                                 onMapCreated: (controller) {
                                   setState(() {
-                                    contactUsScreenController.mapController =
-                                        controller;
+                                    contactUsScreenController.mapController = controller;
                                   });
                                 },
                                 initialCameraPosition: CameraPosition(
@@ -221,8 +175,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: SizeUtils.horizontalBlockSize * 4),
+                            padding: EdgeInsets.symmetric(vertical: SizeUtils.horizontalBlockSize * 4),
                             child: AppText(
                               text: "Luso-American Financial",
                               fontWeight: FontWeight.w600,
@@ -233,8 +186,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                           SizedBox(
                             width: SizeUtils.horizontalBlockSize * 30,
                             child: AppText(
-                              text:
-                                  "East Coast Office 128 Union St., Suite 502 New Bedford MA 02740 Toll Free: (800) 378-0566 Fax: (774) 202-1275",
+                              text: "East Coast Office 128 Union St., Suite 502 New Bedford MA 02740 Toll Free: (800) 378-0566 Fax: (774) 202-1275",
                               height: 1.4,
                               textAlign: TextAlign.center,
                               fontWeight: FontWeight.w400,
@@ -242,43 +194,31 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                               color: AppColors.black,
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: SizeUtils.horizontalBlockSize * 5),
-                            child: SizedBox(
-                              height: SizeUtils.horizontalBlockSize * 45,
-                              // child: Image.asset(
-                              //   AssetsPath.map,
-                              //   fit: BoxFit.fill,
-                              // ),
-                              // child: GoogleMap(
-                              //   mapType: MapType.normal,
-                              //   initialCameraPosition: _newBedfordShowLocation,
-                              //   onMapCreated: (GoogleMapController controller) {
-                              //     _controller.complete(controller);
-                              //   },
-                              // ),
-
-                              child: GoogleMap(
-                                mapType: MapType.normal,
-                                onMapCreated: (controller) {
-                                  setState(() {
-                                    contactUsScreenController.mapController =
-                                        controller;
-                                  });
-                                },
-                                initialCameraPosition: CameraPosition(
-                                  target: newBedfordShowLocation,
-                                  //initial position
-                                  zoom: 15.0, //initial zoom level
-                                ),
-                                markers: getOfficeMarkers(),
-                              ),
-                            ),
+                          Obx(
+                            () {
+                              print('${contactUsScreenController.isLoaded.value}');
+                              return data.value
+                                  ? Padding(
+                                      padding: EdgeInsets.symmetric(vertical: SizeUtils.horizontalBlockSize * 5),
+                                      child: SizedBox(
+                                          height: SizeUtils.horizontalBlockSize * 45,
+                                          child: GoogleMap(
+                                            mapType: MapType.normal,
+                                            onMapCreated: (controller) {
+                                              contactUsScreenController.mapController1 = controller;
+                                            },
+                                            initialCameraPosition: CameraPosition(
+                                              target: newBedfordShowLocation,
+                                              zoom: 15.0, //initial zoom level
+                                            ),
+                                            markers: getOfficeMarkers(),
+                                          )),
+                                    )
+                                  : SizedBox();
+                            },
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: SizeUtils.horizontalBlockSize * 6),
+                            padding: EdgeInsets.symmetric(vertical: SizeUtils.horizontalBlockSize * 6),
                             child: AppText(
                               text: "Contact Us",
                               color: AppColors.darkBlue,
@@ -289,8 +229,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                           CustomTextField(
                             radius: SizeUtils.horizontalBlockSize * 2,
                             cursorColor: Colors.transparent,
-                            controller: contactUsScreenController
-                                .fullNameContactUsController,
+                            controller: contactUsScreenController.fullNameContactUsController,
                             fillColor: AppColors.grey[70]!.withOpacity(0.1),
                             hintText: StringsUtils.fullName,
                             validator: AppValidator.isFirstNameValid,
@@ -299,8 +238,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                           CustomTextField(
                             radius: SizeUtils.horizontalBlockSize * 2,
                             cursorColor: Colors.transparent,
-                            controller: contactUsScreenController
-                                .lastNameContactUsController,
+                            controller: contactUsScreenController.lastNameContactUsController,
                             fillColor: AppColors.grey[70]!.withOpacity(0.1),
                             hintText: StringsUtils.lastName,
                             validator: AppValidator.isLastNameValid,
@@ -309,8 +247,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                           CustomTextField(
                             radius: SizeUtils.horizontalBlockSize * 2,
                             cursorColor: Colors.transparent,
-                            controller: contactUsScreenController
-                                .emailContactUsController,
+                            controller: contactUsScreenController.emailContactUsController,
                             fillColor: AppColors.grey[70]!.withOpacity(0.1),
                             hintText: StringsUtils.email,
                             validator: AppValidator.emailValidator,
@@ -319,8 +256,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                           CustomTextField(
                             radius: SizeUtils.horizontalBlockSize * 2,
                             cursorColor: Colors.transparent,
-                            controller: contactUsScreenController
-                                .phoneNumberContactUsController,
+                            controller: contactUsScreenController.phoneNumberContactUsController,
                             fillColor: AppColors.grey[70]!.withOpacity(0.1),
                             hintText: StringsUtils.phone,
                             validator: AppValidator.isValidMobile,
@@ -336,8 +272,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                           CustomTextField(
                             radius: SizeUtils.horizontalBlockSize * 2,
                             cursorColor: Colors.transparent,
-                            controller: contactUsScreenController
-                                .messagesContactUsController,
+                            controller: contactUsScreenController.messagesContactUsController,
                             fillColor: AppColors.grey[70]!.withOpacity(0.1),
                             hintText: StringsUtils.messages,
                             maxLine: 6,
@@ -348,36 +283,19 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                             radius: SizeUtils.horizontalBlockSize * 2,
                             text: 'SUBMIT',
                             onTap: () {
-                              if (contactUsScreenController
-                                  .signUpFormKey.currentState!
-                                  .validate()) {
+                              if (contactUsScreenController.signUpFormKey.currentState!.validate()) {
                                 contactUsScreenController.Contact_Us(
-                                  email: contactUsScreenController
-                                      .emailContactUsController.text,
-                                  firstName: contactUsScreenController
-                                      .fullNameContactUsController.text,
-                                  lastName: contactUsScreenController
-                                      .lastNameContactUsController.text,
-                                  mobile: contactUsScreenController
-                                      .phoneNumberContactUsController.text,
-                                  msg: contactUsScreenController
-                                      .messagesContactUsController.text,
+                                  email: contactUsScreenController.emailContactUsController.text,
+                                  firstName: contactUsScreenController.fullNameContactUsController.text,
+                                  lastName: contactUsScreenController.lastNameContactUsController.text,
+                                  mobile: contactUsScreenController.phoneNumberContactUsController.text,
+                                  msg: contactUsScreenController.messagesContactUsController.text,
                                 );
-                                contactUsScreenController
-                                    .fullNameContactUsController
-                                    .clear();
-                                contactUsScreenController
-                                    .messagesContactUsController
-                                    .clear();
-                                contactUsScreenController
-                                    .phoneNumberContactUsController
-                                    .clear();
-                                contactUsScreenController
-                                    .emailContactUsController
-                                    .clear();
-                                contactUsScreenController
-                                    .lastNameContactUsController
-                                    .clear();
+                                contactUsScreenController.fullNameContactUsController.clear();
+                                contactUsScreenController.messagesContactUsController.clear();
+                                contactUsScreenController.phoneNumberContactUsController.clear();
+                                contactUsScreenController.emailContactUsController.clear();
+                                contactUsScreenController.lastNameContactUsController.clear();
                               }
                             },
                             buttonColor: AppColors.darkBlue,
@@ -397,32 +315,28 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
   }
 
   Set<Marker> getHomeMarkers() {
-    setState(() {
-      HomeMarkers.add(Marker(
-        markerId: MarkerId(homeShowLocation.toString()),
-        position: LatLng(53.350140, -6.266155), //position of marker
-        infoWindow: InfoWindow(
-          title: 'Home Office',
-          snippet: '7080 Donlon Way, Suite 200, Dublin CA 94568',
-        ),
-        icon: BitmapDescriptor.defaultMarker, //Icon for Marker
-      ));
-    });
+    HomeMarkers.add(Marker(
+      markerId: MarkerId(homeShowLocation.toString()),
+      position: LatLng(53.350140, -6.266155), //position of marker
+      infoWindow: InfoWindow(
+        title: 'Home Office',
+        snippet: '7080 Donlon Way, Suite 200, Dublin CA 94568',
+      ),
+      icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+    ));
     return HomeMarkers;
   }
 
   Set<Marker> getOfficeMarkers() {
-    setState(() {
-      NewBedfordMarkers.add(Marker(
-        markerId: MarkerId(newBedfordShowLocation.toString()),
-        position: LatLng(41.638409, -70.941208), //position of marker
-        infoWindow: InfoWindow(
-          title: 'East Coast Office',
-          snippet: '128 Union St., Suite 502 New Bedford MA 02740',
-        ),
-        icon: BitmapDescriptor.defaultMarker, //Icon for Marker
-      ));
-    });
+    NewBedfordMarkers.add(Marker(
+      markerId: MarkerId(newBedfordShowLocation.toString()),
+      position: LatLng(41.638409, -70.941208), //position of marker
+      infoWindow: InfoWindow(
+        title: 'East Coast Office',
+        snippet: '128 Union St., Suite 502 New Bedford MA 02740',
+      ),
+      icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+    ));
     return NewBedfordMarkers;
   }
 }
