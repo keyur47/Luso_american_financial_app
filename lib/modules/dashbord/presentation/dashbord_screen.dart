@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:luso_american_financial/RemoteMessage/firebase_notification.dart';
 import 'package:luso_american_financial/modules/dashbord/controller/dashbord_screen_controller.dart';
 import 'package:luso_american_financial/utils/app_colors.dart';
 import 'package:luso_american_financial/utils/assets_path.dart';
@@ -14,17 +15,34 @@ import 'package:luso_american_financial/widgets/app_text.dart';
 import 'package:luso_american_financial/widgets/custom_button.dart';
 import 'package:luso_american_financial/widgets/slide_dots.dart';
 
-class DashBordScreen extends StatelessWidget {
+class DashBordScreen extends StatefulWidget {
   DashBordScreen({Key? key}) : super(key: key);
+
+  @override
+  State<DashBordScreen> createState() => _DashBordScreenState();
+}
+
+class _DashBordScreenState extends State<DashBordScreen> {
   final DashBordScreenController dashBordScreenController = Get.find();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    FireBaseNotification().localNotificationRequestPermissions();
+    FireBaseNotification().configureDidReceiveLocalNotificationSubject();
+    FireBaseNotification().configureSelectNotificationSubject();
+    super.initState();
+  }
+
   final scrollController = ScrollController();
+
   scrollToTop() {
     Timer(
       const Duration(seconds: 0),
-          () => scrollController.animateTo(0.0,
-          curve: Curves.easeOut, duration: const Duration(milliseconds: 100)),
+      () => scrollController.animateTo(0.0, curve: Curves.easeOut, duration: const Duration(milliseconds: 100)),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -182,7 +200,7 @@ class DashBordScreen extends StatelessWidget {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    if ( dashBordScreenController.currentPage.value != 0) {
+                                    if (dashBordScreenController.currentPage.value != 0) {
                                       dashBordScreenController.currentPage.value--;
                                       dashBordScreenController.pageController.jumpToPage(dashBordScreenController.currentPage.value);
                                     }
@@ -200,7 +218,7 @@ class DashBordScreen extends StatelessWidget {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    if ( dashBordScreenController.currentPage.value !=
+                                    if (dashBordScreenController.currentPage.value !=
                                         int.parse(dashBordScreenController.bannerMediaModal.value.testData?.length.toString() ?? "0") - 1) {
                                       dashBordScreenController.currentPage.value++;
                                       dashBordScreenController.pageController.jumpToPage(dashBordScreenController.currentPage.value);
@@ -231,7 +249,6 @@ class DashBordScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-
                             Obx(
                               () => Row(
                                 mainAxisSize: MainAxisSize.min,
