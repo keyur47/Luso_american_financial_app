@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "786519830595",
+    "project_id": "lusoamerican-c84fd",
+    "storage_bucket": "lusoamerican-c84fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786519830595:android:820dd2acc97c39008c24f6",
+        "android_client_info": {
+          "package_name": "com.example.luso_american_financial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "786519830595-sp1tunv3c90dvjtqg6u561ovl1ko3qe7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-0nlm3TTSLo4smbmMwHVlaV0gDrKKS4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "786519830595-sp1tunv3c90dvjtqg6u561ovl1ko3qe7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
