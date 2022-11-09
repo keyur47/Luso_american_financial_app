@@ -15,4 +15,13 @@ class AppPreference {
     final int? value = _prefs.getInt("onbording");
     return value;
   }
+
+  static Future setLoginInt(int value) async {
+    await _prefs.setInt("login", value);
+  }
+
+  static int? getLoginInt() {
+    final int? value = _prefs.getInt("login");
+    return value;
+  }
 }

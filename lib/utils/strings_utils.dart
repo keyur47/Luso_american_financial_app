@@ -3,6 +3,12 @@ class StringsUtils {
 
   static const String ddMmYy = 'dd-MM–yyyy';
 
+  static const phone = 'Phone';
+  static const verifyOtp = 'Verify OTP';
+  static const getOtp = 'Get OTP';
+  static const didntGetOtp = 'Didn\'t get OTP? ';
+  static const sendAgain = 'Send Again';
+  static const submit = 'Submit';
   ///Validator
   static const String emailRegExp =
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
@@ -14,7 +20,7 @@ class StringsUtils {
       r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
   static const String pWDMustBeUpperLower =
       'Password must be Uppercase,Lowercase,digit and specialCharacters';
-
+  static const String backToLogin = 'Back to login';
   static const String appName = 'Luso American Financial';
   static const String getStarted = 'GET STARTED';
   static const String totalStops = 'Total Stops: ';
@@ -34,8 +40,8 @@ class StringsUtils {
   static const String fullName = 'Full Name';
   static const String lastName = 'Last Name';
   static const String email = 'Email';
-  static const String phone = 'Phone';
   static const String messages = 'Messages';
+  static const String login = 'Login';
   static const String zipCode = 'Zip Code';
   static const String eventCalendar = 'Event Calendar';
   static const String splashScreenText = 'A FRATERNAL BENEFIT SOCIETY';

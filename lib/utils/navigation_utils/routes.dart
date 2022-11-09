@@ -6,13 +6,14 @@ import 'package:luso_american_financial/modules/contactus/presentation/contactus
 import 'package:luso_american_financial/modules/dashbord/presentation/dashbord_screen.dart';
 import 'package:luso_american_financial/modules/findagent/presentation/find_agent_screen.dart';
 import 'package:luso_american_financial/modules/findcouncil/presentation/find_council_screen.dart';
+import 'package:luso_american_financial/modules/login/presentation/login_screen.dart';
+import 'package:luso_american_financial/modules/login/mobile/presentation/otp_verify_set_password.dart';
 import 'package:luso_american_financial/modules/notifications/bottom/notifications_bottom_navigation_bar_screen.dart';
 import 'package:luso_american_financial/modules/notifications/presentation/notifications_screen.dart';
 import 'package:luso_american_financial/modules/onboarding/presentation/onboarding_screen.dart';
 import 'package:luso_american_financial/modules/splash/presentation/splash_screen.dart';
 import 'package:luso_american_financial/modules/submitcouncilphoto/bottom/submit_council_bottom_navigation_bar_screen.dart';
 import 'package:luso_american_financial/modules/submitcouncilphoto/presentation/submit_council_photo_screen.dart';
-
 
 mixin Routes {
   static const defaultTransition = Transition.rightToLeft;
@@ -31,72 +32,84 @@ mixin Routes {
   static const String contactsTabBar = '/contactsTabBar';
   static const String calendarTabBar = '/calendarTabBar';
   static const String submitCouncilTabBar = '/submitCouncilTabBar';
+  static const String loginScreen = '/loginScreen';
+  static const String otpVerify = '/otpVerify';
 
   static List<GetPage<dynamic>> routes = [
     GetPage<dynamic>(
       name: splash,
-      page: () =>  SplashScreen(),
+      page: () => SplashScreen(),
       transition: defaultTransition,
     ),
     GetPage<dynamic>(
       name: onboardingScreen,
-      page: () =>  OnboardingScreen(),
+      page: () => OnboardingScreen(),
+      transition: defaultTransition,
+    ),
+    GetPage<dynamic>(
+      name: loginScreen,
+      page: () => LoginScreen(),
+      transition: defaultTransition,
+    ),
+    GetPage<dynamic>(
+      name: otpVerify,
+      page: () => OtpVerify(),
       transition: defaultTransition,
     ),
     GetPage<dynamic>(
       name: dashBordScreen,
-      page: () =>  DashBordScreen(),
+      page: () => DashBordScreen(),
       transition: defaultTransition,
     ),
     GetPage<dynamic>(
       name: calendarScreen,
-      page: () =>   CalendarScreen(),
+      page: () => CalendarScreen(),
       transition: defaultTransition,
     ),
     GetPage<dynamic>(
       name: notificationsTabBar,
-      page: () =>  NotificationsTabBar(),
+      page: () => NotificationsTabBar(),
       transition: defaultTransition,
     ),
     GetPage<dynamic>(
       name: notificationsScreen,
-      page: () =>  NotificationsScreen(),
+      page: () => NotificationsScreen(),
       transition: defaultTransition,
     ),
     GetPage<dynamic>(
       name: submitCouncilScreen,
-      page: () =>  SubmitCouncilScreen(),
+      page: () => SubmitCouncilScreen(),
       transition: defaultTransition,
     ),
     GetPage<dynamic>(
       name: findAgentScreen,
-      page: () =>  FindAgentScreen(),
+      page: () => FindAgentScreen(),
       transition: defaultTransition,
     ),
     GetPage<dynamic>(
       name: findCouncilScreen,
-      page: () =>  FindCouncilScreen(),
+      page: () => FindCouncilScreen(),
       transition: defaultTransition,
     ),
     GetPage<dynamic>(
       name: contactUsScreen,
-      page: () =>  ContactUsScreen(),
+      page: () => ContactUsScreen(),
       transition: defaultTransition,
     ),
     //
     GetPage<dynamic>(
       name: contactsTabBar,
-      page: () =>  ContactsTabBar(),
+      page: () => ContactsTabBar(),
       transition: defaultTransition,
     ),
     GetPage<dynamic>(
       name: calendarTabBar,
-      page: () =>  CalendarTabBar(),
+      page: () => CalendarTabBar(),
       transition: defaultTransition,
     ),
     GetPage<dynamic>(
       name: submitCouncilTabBar,
-      page: () =>  SubmitCouncilTabBar(),
+      page: () => SubmitCouncilTabBar(),
       transition: defaultTransition,
     ),
   ];

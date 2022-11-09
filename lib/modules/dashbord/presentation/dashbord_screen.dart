@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:luso_american_financial/RemoteMessage/firebase_notification.dart';
+import 'package:luso_american_financial/helper/RemoteMessage/firebase_notification.dart';
 import 'package:luso_american_financial/modules/dashbord/controller/dashbord_screen_controller.dart';
 import 'package:luso_american_financial/utils/app_colors.dart';
 import 'package:luso_american_financial/utils/assets_path.dart';

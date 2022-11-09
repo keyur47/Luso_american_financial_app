@@ -4,6 +4,8 @@ import 'package:luso_american_financial/modules/contactus/controller/contactus_s
 import 'package:luso_american_financial/modules/dashbord/controller/dashbord_screen_controller.dart';
 import 'package:luso_american_financial/modules/findagent/controller/find_agent_screen_controller.dart';
 import 'package:luso_american_financial/modules/findcouncil/controller/find_council_screen_controller.dart';
+import 'package:luso_american_financial/modules/login/controller/login_controller.dart';
+import 'package:luso_american_financial/modules/login/mobile/controller/mobile_login_controller.dart';
 import 'package:luso_american_financial/modules/notifications/controller/notifications_screen_controller.dart';
 import 'package:luso_american_financial/modules/onboarding/controller/onboarding_screen_controller.dart';
 import 'package:luso_american_financial/modules/splash/controller/splash_screen_controller.dart';
@@ -15,6 +17,8 @@ class AppBinding extends Bindings {
     Get.put<SplashScreenController>(SplashScreenController());
     Get.put<OnboardingScreenController>(OnboardingScreenController());
     Get.put<DashBordScreenController>(DashBordScreenController());
+    Get.put<LoginController>(LoginController());
+    Get.put<MobileLoginController>(MobileLoginController());
     Get.put<CalendarScreenController>(CalendarScreenController());
     Get.put<NotificationsScreenController>(NotificationsScreenController());
     Get.put<FindAgentScreenController>(FindAgentScreenController());

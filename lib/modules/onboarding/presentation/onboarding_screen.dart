@@ -87,7 +87,7 @@ class OnboardingScreen extends StatelessWidget {
                   onTap: () {
                     AppPreference.setInt(1);
                     AppPreference.getInt();
-                    Navigation.popAndPushNamed(Routes.dashBordScreen);
+                    Navigation.popAndPushNamed(Routes.loginScreen);
                   },
                   text: StringsUtils.getStarted),
             ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:luso_american_financial/RemoteMessage/firebase_notification.dart';
+import 'package:luso_american_financial/helper/RemoteMessage/firebase_notification.dart';
 import 'package:luso_american_financial/utils/app_colors.dart';
 import 'package:luso_american_financial/utils/assets_path.dart';
 import 'package:luso_american_financial/utils/size_utils.dart';

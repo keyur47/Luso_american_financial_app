@@ -15,8 +15,9 @@ class SplashScreenController extends GetxController {
       const Duration(seconds: 3),
       () {
         final value = AppPreference.getInt() ?? 0;
+        final login = AppPreference.getLoginInt() ?? 0;
         value == 1
-            ? Navigation.popAndPushNamed(Routes.dashBordScreen)
+            ? login == 1 ? Navigation.popAndPushNamed(Routes.dashBordScreen) : Navigation.popAndPushNamed(Routes.loginScreen)
             : Navigation.popAndPushNamed(Routes.onboardingScreen);
       },
     );

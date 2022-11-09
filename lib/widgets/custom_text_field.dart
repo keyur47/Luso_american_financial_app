@@ -98,7 +98,7 @@ class CustomTextField extends StatelessWidget {
           readOnly: readOnly,
           style: TextStyle(
             color: textColor ?? AppColors.grey,
-            fontSize: fontSize ?? SizeUtils.fSize_12(),
+            fontSize: fontSize ?? SizeUtils.fSize_13(),
             fontWeight: fontWeight ?? FontWeight.w600,
           ),
           onTap: onTap,
