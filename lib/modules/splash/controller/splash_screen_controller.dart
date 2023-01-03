@@ -5,7 +5,6 @@ import 'package:luso_american_financial/helper/shared_preferences.dart';
 import 'package:luso_american_financial/utils/navigation_utils/navigation.dart';
 import 'package:luso_american_financial/utils/navigation_utils/routes.dart';
 
-
 class SplashScreenController extends GetxController {
   @override
   void onInit() {
@@ -17,7 +16,9 @@ class SplashScreenController extends GetxController {
         final value = AppPreference.getInt() ?? 0;
         final login = AppPreference.getLoginInt() ?? 0;
         value == 1
-            ? login == 1 ? Navigation.popAndPushNamed(Routes.dashBordScreen) : Navigation.popAndPushNamed(Routes.loginScreen)
+            ? login == 1
+                ? Navigation.popAndPushNamed(Routes.dashBordScreen)
+                : Navigation.popAndPushNamed(Routes.dashBordScreen)
             : Navigation.popAndPushNamed(Routes.onboardingScreen);
       },
     );
